@@ -112,10 +112,10 @@ Each run produces a directory under `runs/<timestamp>/` containing:
 
 The reference dataset used during development is approximately 596 MB, and the default run writes multiple CSV artifacts plus a JSON summary. This means the runtime includes more than just the simulation loop; it also includes parsing, book maintenance, output serialization, and final report generation.
 
-The repository includes a benchmark note in `bench.md` reporting the following release-mode baseline for one benchmark setup:
+Using the development benchmark setup, a recent release-mode baseline was:
 
 ```text
-4.251 s ±  0.023 s
+4.202 s +/- 0.031 s
 ```
 
 I treat that number as a baseline rather than a claim of extreme optimization. The project is reasonably fast for a portfolio backtester that is doing full input replay and writing run artifacts, but there is still room for deeper optimization if performance becomes the main goal.
