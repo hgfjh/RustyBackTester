@@ -10,7 +10,7 @@ This project is intentionally not a production trading system. It is a portfolio
 
 ## What It Does
 
-- Replays historical order book messages from the included BTCUSDT dataset.
+- Replays historical order book messages from a BTCUSDT dataset used to drive the simulation.
 - Reconstructs a local book from snapshots and deltas while tracking gaps and other anomalies.
 - Computes a compact market state summary, including spread, mid, imbalance, and microprice.
 - Runs a simple market-making strategy that quotes around microprice.
@@ -66,9 +66,11 @@ A few technical decisions shape the project.
 
 ## How to Run
 
-This project currently runs against the included dataset file in the repository root:
+This project currently runs against a local dataset file in the repository root:
 
 - `2026-02-02_BTCUSDT_ob200.data`
+
+The dataset is not bundled in this repository. If you would like to reproduce the exact run setup, you will need to supply a compatible input file at that path or adapt the hardcoded path in `src/main.rs` to point to your local copy.
 
 The input path is hardcoded in `src/main.rs`, so there is no CLI configuration layer yet. To run the backtest:
 
@@ -108,7 +110,7 @@ Each run produces a directory under `runs/<timestamp>/` containing:
 
 ## Performance
 
-The included dataset is approximately 596 MB, and the default run writes multiple CSV artifacts plus a JSON summary. This means the runtime includes more than just the simulation loop; it also includes parsing, book maintenance, output serialization, and final report generation.
+The reference dataset used during development is approximately 596 MB, and the default run writes multiple CSV artifacts plus a JSON summary. This means the runtime includes more than just the simulation loop; it also includes parsing, book maintenance, output serialization, and final report generation.
 
 The repository includes a benchmark note in `bench.md` reporting the following release-mode baseline for one benchmark setup:
 
@@ -125,3 +127,7 @@ I treat that number as a baseline rather than a claim of extreme optimization. T
 - The engine writes detailed outputs during the run, which is helpful for inspection but not ideal for peak benchmark performance.
 - There is room to optimize parsing, output writing, and book maintenance if faster end-to-end runtimes become a priority.
 - This is a portfolio project, not production trading infrastructure. It is designed to demonstrate systems thinking, simulation design, and Rust implementation skills rather than production deployment readiness.
+
+## Contact
+
+If you have questions, comments, or ideas for improving the project, feel free to reach out at `oio3@cornell.edu`. I would be glad to chat about the implementation, possible extensions, or ways to make the backtester more realistic and robust.
