@@ -1,0 +1,18 @@
+[package]
+name = "backtest_engine"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+atoi = "2.0.0"
+chrono = "0.4.44"
+csv = "1.4.0"
+derivative = "2.2.0"
+memmap2 = "0.9.10"
+rand = "0.10.0"
+sci-rs = "0.4.1"
+serde = "1.0.228"
+serde_derive = "1.0.228"
+serde_json = "1.0.149"
+sonic-rs = "0.5.7"
+statrs = "0.18.0"
